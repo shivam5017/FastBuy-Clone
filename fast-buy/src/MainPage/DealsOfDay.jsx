@@ -15,14 +15,28 @@ import TimerBox from '../Contents/TimerBox';
 import DealsContainer from '../Contents/DealsContainer';
 import BonusContainer from "../Contents/BonusContainer"
 import Footer from "../Components/Footer"
-
+import { Spinner } from '@chakra-ui/react'
 const DealsOfDay = () => {
 
+ 
+  const [loading,setLoading]=useState(false)
 
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
 
 
   return (
+    
     <div>
+      {
+         loading ? (
+          <Spinner m="auto" justifyContent="center" mt="20%"/>
+        ):(
+          <>
         <Add1 />
         <Navbar />
       <Navbar2 />
@@ -32,7 +46,9 @@ const DealsOfDay = () => {
     <BonusContainer />
 
     <Footer />
-    
+    </>
+        )
+        }
     </div>
   )
 }
