@@ -12,23 +12,45 @@ import Grid4 from "../Grids/Grid4"
 import Grid5 from "../Grids/Grid5"
 import TextContent from '../Contents/TextContent';
 import Footer from "../Components/Footer"
+import { Spinner } from '@chakra-ui/react'
+import {useState,useEffect} from "react"
 
 const Home = () => {
+  
+  const [loading,setLoading]=useState(false)
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+  
+
   return (
     <div>
-        <Add1 />
-      <Navbar />
-      <Navbar2 />
-      <Add2 />
-      <BannerAdd1 />
-      <Grid1 />
-      <Add3 />
-      <Grid2 />
-      <Grid3 />
-      <Grid4 />
-      <Grid5 />
-      <TextContent />
-      <Footer />
+      {
+        loading ? (
+          <Spinner m="auto" justifyContent="center" mt="20%"/>
+        ):(
+          <>
+          <Add1 />
+          <Navbar />
+          <Navbar2 />
+          <Add2 />
+          <BannerAdd1 />
+          <Grid1 />
+          <Add3 />
+          <Grid2 />
+          <Grid3 />
+          <Grid4 />
+          <Grid5 />
+          <TextContent />
+          <Footer />
+          </>
+        )
+      }
+     
     </div>
   )
 }

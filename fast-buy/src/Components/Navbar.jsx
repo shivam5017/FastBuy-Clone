@@ -1,5 +1,5 @@
 import React from 'react'
-import {Flex,Box,Grid,Image,Input,HStack,Show,Hide} from "@chakra-ui/react"
+import {Flex,Box,Grid,Image,Input,HStack,Show,Hide, Button,Text} from "@chakra-ui/react"
 import {
   Menu,
   MenuButton,
@@ -20,9 +20,9 @@ import { useNavigate } from 'react-router-dom'
 
 
 
-
 const Navbar = () => {
   const navigate = useNavigate();
+  
 
 
   const handleDealClick=()=>{
@@ -32,13 +32,14 @@ const Navbar = () => {
 
   const handleStoresClick=()=>{
     navigate("/stores");
-
+         
   }
   
   const handleAccountClick=()=>{
     navigate("/account");
 
   }
+
 
    const handleCartClick=()=>{
     navigate("/cart");
@@ -110,29 +111,36 @@ const Navbar = () => {
            </Box>
          {/* part 2 */}
             
-           <HStack spacing='22px' mt={{base:"-30%",lg:"22px"}} ml={{base:"190px",lg:"150px"}} bg="none">
+           <HStack spacing='22px' mt={{base:"-30%",lg:"22px"}} ml={{base:"190px",lg:"150px"}} bg="none" >
+<Box  w={{base:"2px",lg:"10px"}} h='40px' bg='none' gap={2}>
+     <FaStoreSlash color="white" size={20}  mr={{base:"20px"}}/>
+   </Box>
 
 <Hide below='md'>
-<Box w='50px' h='40px' bg='none' color="white" fontWeight="bold" onClick={handleDealClick}>
+<Box w='50px' h='40px' bg='none' color="white" fontWeight="bold" onClick={handleDealClick} cursor="pointer">
              Deals
           </Box>
 </Hide>
 
+<Box   w='10px' h='40px' bg='none'>
+           <AiOutlineShoppingCart color="white" size={20}/>
+         </Box>
+      
+         
+         <Hide below='md'>
+      <Box  w='70px' h='40px' bg='none' color="white" fontWeight="bold" onClick={handleCartClick}  cursor="pointer">
+      Cart
+     </Box>
+     </Hide>
 
 
-   
-   <Box  w={{base:"2px",lg:"10px"}} h='40px' bg='none' gap={2}>
-     <FaStoreSlash color="white" size={20}  mr={{base:"20px"}}/>
-   </Box>
+         <Box>
+          {
+          <Text fontSize="15px" color="white" mt="-15px" ml="-15px" fontWeight="bold"></Text>
+          }
+         </Box>
+  
 
-     
-       <Hide below='md'>
-        <Box w='50px' h='40px' bg='none' color="white" fontWeight="bold" text={{base:"hidden"}} onClick={handleStoresClick}>
-             Stores
-          </Box>
-          </Hide>
-          
-          
          
           <Box  w='10px' h='40px' bg='none'>
            <VscAccount color="white" size={20} />
@@ -140,23 +148,21 @@ const Navbar = () => {
           
        
           <Hide below='md'>
-        <Box  w='70px' h='40px' bg='none' color="white" fontWeight="bold" onClick={handleAccountClick}>
+        <Box  w='70px' h='40px' bg='none' color="white" fontWeight="bold" onClick={handleAccountClick}  cursor="pointer">
          Account
          </Box>
          </Hide>
+            
+        
          
-         
+   
           
-         <Box   w='10px' h='40px' bg='none'>
-           <AiOutlineShoppingCart color="white" size={20}/>
-         </Box>
+         
+         
       
          
-         <Hide below='md'>
-      <Box  w='70px' h='40px' bg='none' color="white" fontWeight="bold" onClick={handleCartClick}>
-      Cart
-     </Box>
-     </Hide>
+          
+       
      
 </HStack>
            </Box>

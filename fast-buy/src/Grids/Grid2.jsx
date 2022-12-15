@@ -1,35 +1,27 @@
 import React from 'react'
 import {Text,Grid,GridItem,Image,Link} from "@chakra-ui/react"
 import {useState,useEffect} from "react"
-
+import { useNavigate } from 'react-router-dom'
 import axios from "axios"
+import { json } from 'react-router-dom'
 // const getData=(e)=>{
 //   return axios.get(`http://localhost:4000/api/products/?_category=${text}`)
 // }
-
+// var output=json.parse(localStorage.getItem("item"))||[];
 const Grid2 = () => {
 
-  const [text,setText]=useState("")
-   console.log(text)
-  const [data,setData]=useState([])
-
-
-  
+const navigate=useNavigate();
+ 
+ 
   const handleClick=(e)=>{
-    
-    
-        axios.get(`http://localhost:4000/api/products?category=${text}`)
-        .then((res)=>setData(res.data))
-        .catch((err)=>console.log(err))
-       
-// setData(res.data)
-      
-    setText(e.currentTarget.textContent)
-     
-    localStorage.setItem("item",JSON.stringify(data))
-
+   
+    axios.get(`http://localhost:4000/api/products?category=${e.currentTarget.textContent}`)
+    .then((res)=>localStorage.setItem("item",JSON.stringify(res.data)))
+    .catch((err)=>console.log(err))
+  navigate("./stores")
   }
  
+
 
 
   return (
