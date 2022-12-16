@@ -26,12 +26,12 @@ const Signup = () => {
     const [name,setName]=useState("")
   const [error,setError]=useState("")
     const {signUp} = useUserAuth()
-
+    
      const Register=async()=>{
          setError("")
          try{
             await signUp(registerEmail,registerPassword,name)
-            console.log(signUp)
+           
             navigate("/")
          }catch(err){
              setError(err.message)
@@ -69,7 +69,7 @@ const Signup = () => {
                  <Text mt="-10px">Already have an account?</Text>
                  
                  </Box>
-                 <RouteLink to="/login" bg="none" color="rgb(0,70,190)" fontSize="20px" fontWeight="bold">Sign In</RouteLink> 
+                 <RouteLink to="/login"><Button w="30%" mt="20px" bg="rgb(0,70,190)" borderRadius="none" color="white">Sign In</Button></RouteLink> 
         
               </Box>
         

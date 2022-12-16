@@ -14,17 +14,16 @@ const getItems=()=>{
 const BonusContainer = () => {
 
 
-    const [data,setData]=useState([])
-
+    const [datas,setDatas]=useState([])
+   
     useEffect(()=>{
       getItems()
       .then((res)=>  
-      setData(res.data))
+      setDatas(res.data))
       .catch((err)=>console.log(err))
   
     },[])
   
-
 
   return (
    <>
@@ -33,10 +32,10 @@ const BonusContainer = () => {
               <Grid w="full" h="fit-content" gridGap={4} gridTemplateColumns={{base:"1fr 1fr",lg:"1fr 1fr 1fr 1fr"}} mt={{base:"20px",lg:"20px"}}>
       
       {
-     data.map((e)=>(<>
-           <ProductDetails4 key={e.id} id={e.id} image={e.image} title={e.title} price={e.price} discount={e.discount} reviews={e.reviews}/>
+     datas.map((e)=>(
+           <ProductDetails4 key={e.id} obj={e} id={e.id} image={e.image} title={e.title} price={e.price} discount={e.discount} reviews={e.reviews}/>
         
-        </>
+        
         ))
       }    
 

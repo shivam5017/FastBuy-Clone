@@ -17,7 +17,7 @@ import BonusContainer from "../Contents/BonusContainer"
 import Footer from "../Components/Footer"
 import { Spinner } from '@chakra-ui/react'
 const DealsOfDay = () => {
-
+ 
  
   const [loading,setLoading]=useState(false)
 

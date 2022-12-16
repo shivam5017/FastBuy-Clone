@@ -1,9 +1,12 @@
 import React from 'react'
 import {Text,Image,Box,Heading, Button} from "@chakra-ui/react"
 import TextTruncate from 'react-text-truncate';
+import { useContext } from 'react'
 
 
 const ProductDetails2 = ({image,title,modelNumber,reviews,discount,price}) => {
+  
+  
   return (
   
       <Box boxShadow={"2xl"}  w="100%" h="100%" mt="20px">
