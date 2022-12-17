@@ -6,6 +6,8 @@ import {BsBoxSeam,BsFacebook,BsInstagram,BsPinterest,BsTruck, BsTwitter, BsYoutu
 import {RiExchangeBoxLine} from 'react-icons/ri'
 import AccordianContent from "../Contents/AccordianContent"
 import FooterForm from '../Contents/FooterForm'
+import {Link as RouteLink} from "react-router-dom"
+
 const Footer = () => {
   return (
     <>
@@ -88,7 +90,7 @@ const Footer = () => {
         </Box>
         </Flex>
         <Box bg="rgb(240,242,245)" h="550px" w="30%" p="20px"  >
-            <Text ><Link color="black">Sign in or Create Account</Link></Text>
+            <Text ><RouteLink color="black" to="./signup">Sign in or Create Account</RouteLink></Text>
             <Divider m="20px" />
         <Heading fontSize="xl">Get the latest deals and more.</Heading>
         <Flex mt="20px">

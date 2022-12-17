@@ -27,12 +27,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { ChevronDownIcon, StarIcon, TimeIcon } from "@chakra-ui/icons";
-import {
-    Alert,
-    AlertIcon,
-    AlertTitle,
-    AlertDescription,
-  } from '@chakra-ui/react'
+import Alert from "../Pages/Alert"
 import Timer1 from "../Timer/Timer";
 import { Icon } from "@chakra-ui/react";
 import { BsShieldCheck } from "react-icons/bs";
@@ -43,9 +38,21 @@ import { Spinner } from '@chakra-ui/react'
 import { useEffect } from "react";
 const Cart = () => {
   const {arr,removeItem } = useContext(CartContext);
+  const [alert,setAlert]=useState(null)
   const {user} =useUserAuth();
   const navigate=useNavigate();
   const price = 1470000.15;
+  const [admin,setAdmin]=useState([])
+
+  const showAlert=(message,type)=>{
+    setAlert({
+      msg:message,
+      type:type
+    })
+
+  }
+  
+  
 
 let dollarUSLocale = Intl.NumberFormat('en-US');
 let dollarIndianLocale = Intl.NumberFormat('en-IN');
@@ -69,16 +76,13 @@ let dollarIndianLocale = Intl.NumberFormat('en-IN');
     setMax( e *  discount);
     setMaxTotal(e * price);
   }
-  console.log(user)
+  
 
   const handleNavigate=()=>{
     navigate("/signup")
   }
    
-  const ele=<Alert status='error'>
-  <AlertIcon />
-  <AlertTitle>Please Login First</AlertTitle>
-  </Alert> 
+  
 
  
 const [loading,setLoading]=useState(false)
@@ -94,12 +98,19 @@ useEffect(() => {
  
  const handlecheckout=()=>{
     if(user==null){
-       setTimeout(()=>{
+      showAlert("Please Login First","danger")
+     
+      setTimeout(()=>{
         navigate("/login")
-       },1000)
+      },2000)
+      
     }else{
-        alert("hi")
+      showAlert("Order Placed","success")
+      localStorage.setItem("adminProducts",JSON.stringify(arr))
+      localStorage.setItem("buyername",JSON.stringify(user.displayName))
     }
+
+    
   
  }
 
@@ -119,15 +130,7 @@ useEffect(() => {
           ):( <>
 
             <NavBar />
-             {
-              user?"":
-              <Alert status='error'>
-        <AlertIcon />
-        <AlertTitle>Please Login First</AlertTitle>
-        </Alert> 
-      
-             }
-           
+            <Alert alert={alert}/>
                {
                   arr==""? <Flex  h="fit-content" justifyContent="space-between">
                   <Box lineHeight="2">
@@ -264,6 +267,7 @@ useEffect(() => {
                   <Flex justifyContent="space-between">
                     <Text fontSize="lg">Shoping</Text>
                     <Text fontSize="lg">0</Text>
+                    {/* <Text fontSize="lg">${+discount}</Text> */}
                   </Flex>
                   <Flex justifyContent="space-between">
                     <Text fontSize="lg">Store Pickup</Text>

@@ -18,6 +18,7 @@ import {RiAccountCircleLine} from "react-icons/ri"
 import { useUserAuth } from "../Context/UserAuthContext"
 import { AlertDialog } from "@chakra-ui/react"
 import { useNavigate } from "react-router-dom"
+import { Spinner } from '@chakra-ui/react'
 const Signup = () => {
 
  const navigate=useNavigate()
@@ -32,16 +33,28 @@ const Signup = () => {
          try{
             await signUp(registerEmail,registerPassword,name)
            
-            navigate("/")
+            navigate("/login")
          }catch(err){
              setError(err.message)
          }
      }
+       
+const [loading,setLoading]=useState(false)
+
+useEffect(() => {
+  setLoading(true);
+  setTimeout(() => {
+    setLoading(false);
+  }, 1000);
+}, []);
+
 
 
 
   return (
     <div>
+       {
+            loading?(   <Spinner m="auto" justifyContent="center" mt="20%"/>):(
               <Box  display="flex">
               
               <Box  h="fit-content" w="50%" mt="100px" lineHeight={10}>
@@ -92,7 +105,7 @@ const Signup = () => {
          
             </Box>
         
-      
+            )}
     </div>
   )
 }

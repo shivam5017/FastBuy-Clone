@@ -13,6 +13,7 @@ import Stores from "../MainPage/Stores"
 import Cart from "../MainPage/Cart"
 import Login from "../Components/Login"
 import Signup from "../Components/Signup"
+import AdminPage from "../MainPage/AdminPage";
 
 const AllRoutes = () => {
   // const navigate=useNavigate();
@@ -27,6 +28,7 @@ const AllRoutes = () => {
         <Route path="/account" element={<Account />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/Signup" element={<Signup />}></Route>
+        <Route path="/AdminPage" element={<AdminPage />}></Route>
         </Routes>
     
      

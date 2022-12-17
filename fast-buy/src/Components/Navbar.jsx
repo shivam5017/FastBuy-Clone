@@ -16,16 +16,17 @@ import { IconButton,AccordionButton } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { useUserAuth } from '../Context/UserAuthContext'
 import { async } from '@firebase/util'
+import {useState} from "react"
 
+import { NavbarContext } from '../Context/NavbarContext'
 
-
-
-
+import {useContext} from "react"
 
 const Navbar = () => {
   const navigate = useNavigate();
   
  const {user,logout} =useUserAuth();
+  const {handleChange}=useContext(NavbarContext)
 
   const handleDealClick=()=>{
     navigate("/DealsOfDay");
@@ -57,6 +58,13 @@ const Navbar = () => {
     }
    }
 
+   
+
+
+   
+
+
+   
 
   return (
     <div>
@@ -115,8 +123,8 @@ const Navbar = () => {
   </MenuList>
 </Menu>
 </Hide>
-        
-           <Input bg="white" w={{base:"60%",lg:"40%"}} mt={{base:"-40px",lg:"40px"}} ml={{base:"80px",lg:"20px"}} h={{base:"40px",lg:"55px"}} borderRadius="none" border="none" placeholder='Search Best Buy'/>
+        {/* search functionality */}
+           <Input bg="white" w={{base:"60%",lg:"40%"}} mt={{base:"-40px",lg:"40px"}} ml={{base:"80px",lg:"20px"}} h={{base:"40px",lg:"55px"}}  onChange={handleChange} type="text" borderRadius="none"  border="none" placeholder='Search Best Buy'/>
             <Box bg="white" h={{base:"40px",lg:"55px"}} mt={{base:"-41.5px",lg:"40px"}} w={{base:"30px",lg:"30px"}} ml={{base:"80%",lg:"0"}} >
            <SearchIcon color="rgb(38,71,190)" w="100%" mt={{base:"3",lg:"20px"}} ml={{base:"-2px"}} />
            </Box>

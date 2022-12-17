@@ -30,8 +30,12 @@ const Login = () => {
         setError("")
         try{
            await logIn(loginEmail,loginPassword)
-          
-           navigate("/")
+          if(loginEmail=="admin@gmail.com" && loginPassword=="admin123"){
+            navigate("/AdminPage")
+          }else{
+            navigate("/") 
+          }
+           
         }catch(err){
             setError(err.message)
         }

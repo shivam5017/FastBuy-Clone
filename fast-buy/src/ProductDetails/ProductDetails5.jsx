@@ -15,7 +15,7 @@ const ProductDetails5 = ({image,title,modelNumber,reviews,discount,price,obj}) =
 
   return (
   
-      <Box boxShadow={"2xl"}  w="100%" h={{base:"410px" ,lg:"650px"}} mt="20px" 
+      <Box boxShadow={"2xl"}  w="100%" h={{base:"410px" ,lg:"700px"}} mt="20px" 
        borderRadius="8px"  
       >
            <Image src={image} w="400px" m="auto" />
