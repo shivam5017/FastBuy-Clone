@@ -14,16 +14,19 @@ import {VscAccount} from "react-icons/vsc"
 import {AiOutlineShoppingCart} from "react-icons/ai"
 import { IconButton,AccordionButton } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
+import { useUserAuth } from '../Context/UserAuthContext'
+import { async } from '@firebase/util'
+import {useState} from "react"
 
+import { NavbarContext } from '../Context/NavbarContext'
 
-
-
-
+import {useContext} from "react"
 
 const Navbar = () => {
   const navigate = useNavigate();
   
-
+ const {user,logout} =useUserAuth();
+  const {handleChange}=useContext(NavbarContext)
 
   const handleDealClick=()=>{
     navigate("/DealsOfDay");
@@ -36,7 +39,7 @@ const Navbar = () => {
   }
   
   const handleAccountClick=()=>{
-    navigate("/account");
+    navigate("/login");
 
   }
 
@@ -46,6 +49,22 @@ const Navbar = () => {
 
    }
 
+   const handleLogout=async()=>{
+    try{
+         await logout();
+        
+    }catch(err){
+      console.log(err.message)
+    }
+   }
+
+   
+
+
+   
+
+
+   
 
   return (
     <div>
@@ -104,8 +123,8 @@ const Navbar = () => {
   </MenuList>
 </Menu>
 </Hide>
-        
-           <Input bg="white" w={{base:"60%",lg:"40%"}} mt={{base:"-40px",lg:"40px"}} ml={{base:"80px",lg:"20px"}} h={{base:"40px",lg:"55px"}} borderRadius="none" border="none" placeholder='Search Best Buy'/>
+        {/* search functionality */}
+           <Input bg="white" w={{base:"60%",lg:"40%"}} mt={{base:"-40px",lg:"40px"}} ml={{base:"80px",lg:"20px"}} h={{base:"40px",lg:"55px"}}  onChange={handleChange} type="text" borderRadius="none"  border="none" placeholder='Search Best Buy'/>
             <Box bg="white" h={{base:"40px",lg:"55px"}} mt={{base:"-41.5px",lg:"40px"}} w={{base:"30px",lg:"30px"}} ml={{base:"80%",lg:"0"}} >
            <SearchIcon color="rgb(38,71,190)" w="100%" mt={{base:"3",lg:"20px"}} ml={{base:"-2px"}} />
            </Box>
@@ -134,26 +153,35 @@ const Navbar = () => {
      </Hide>
 
 
-         <Box>
-          {
-          <Text fontSize="15px" color="white" mt="-15px" ml="-15px" fontWeight="bold"></Text>
-          }
-         </Box>
+        
   
 
-         
-          <Box  w='10px' h='40px' bg='none'>
-           <VscAccount color="white" size={20} />
+         <Box  w='80px' h='40px' mr="20px" bg='none' color="white" fontWeight="bold" cursor="pointer">
+          {
+            user? <Text>Welcome!{user.displayName}</Text> :<><Box display='flex' gap="20px"><Box  w='10px' h='40px' bg='none'>
+       <VscAccount color="white" size={20} />
+      </Box>
+       <Hide below='md'>
+  <Box  w='70px' mt="-3px" h='40px' bg='none' color="white" fontWeight="bold" onClick={handleAccountClick}  cursor="pointer">
+  Account
+ </Box>
+ </Hide>
+ </Box> 
+ </>
+          }   
           </Box>
-          
-       
-          <Hide below='md'>
-        <Box  w='70px' h='40px' bg='none' color="white" fontWeight="bold" onClick={handleAccountClick}  cursor="pointer">
-         Account
-         </Box>
-         </Hide>
-            
+
+
+         
+      {
+       user?  <Box>
+       <Button mt={{base:"-15px",lg:"-12px"}} w={{base:"20px",lg:"100px"}} h={{base:"15px",lg:"25px"}} fontSize={{base:'8px',lg:"15px"}} onClick={handleLogout}>Logout</Button>
+      </Box>: ""
+    
+      }
+      
         
+     
          
    
           

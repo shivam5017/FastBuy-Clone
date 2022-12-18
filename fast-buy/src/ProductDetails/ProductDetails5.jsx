@@ -5,11 +5,17 @@ import {StarIcon, TimeIcon} from "@chakra-ui/icons"
 import TextTruncate from 'react-text-truncate';
 import {AiOutlineShoppingCart} from "react-icons/ai"
 import Timer1 from "../Timer/Timer"
-const ProductDetails5 = ({image,title,modelNumber,reviews,discount,price,AddToCart}) => {
+import { useContext } from 'react'
+
+import { CartContext } from "../Context/CartContext"
+const ProductDetails5 = ({image,title,modelNumber,reviews,discount,price,obj}) => {
   var TextTruncate = require('react-text-truncate'); 
+  
+  const change = useContext(CartContext)
+
   return (
   
-      <Box boxShadow={"2xl"}  w="100%" h={{base:"410px" ,lg:"650px"}} mt="20px" 
+      <Box boxShadow={"2xl"}  w="100%" h={{base:"410px" ,lg:"700px"}} mt="20px" 
        borderRadius="8px"  
       >
            <Image src={image} w="400px" m="auto" />
@@ -41,7 +47,7 @@ const ProductDetails5 = ({image,title,modelNumber,reviews,discount,price,AddToCa
  fontSize='20px'
  icon={<AiOutlineShoppingCart />}
 />
-<Button  colorScheme='yellow' borderLeftRadius="none" onClick={AddToCart} fontSize={{base:"12px",lg:"17px"}} w={{base:"40%",lg:"40%"}}>Add to Cart</Button>
+<Button  colorScheme='yellow' borderLeftRadius="none" onClick={()=>change.changeArr(obj)} fontSize={{base:"12px",lg:"17px"}} w={{base:"40%",lg:"40%"}}>Add to Cart</Button>
 
          </Flex>
           

@@ -4,8 +4,16 @@ import { IconButton,Highlight } from '@chakra-ui/react'
 import {StarIcon, TimeIcon} from "@chakra-ui/icons"
 import {AiOutlineShoppingCart} from "react-icons/ai"
 import Timer1 from "../Timer/Timer"
+import { useContext } from 'react'
+
 import TextTruncate from 'react-text-truncate';
-const ProductDetails3 = ({image,title,modelNumber,reviews,discount,price,AddToCart}) => {
+const ProductDetails3 = ({image,title,modelNumber,reviews,discount,price,obj}) => {
+  
+  const addToCart=()=>{
+    
+    console.log("click")
+  }
+
   return (
   
       <Box boxShadow={"2xl"}  w="100%" h={{base:"600px" ,lg:"650px"}} mt="20px" 
@@ -39,7 +47,7 @@ const ProductDetails3 = ({image,title,modelNumber,reviews,discount,price,AddToCa
  fontSize='20px'
  icon={<AiOutlineShoppingCart />}
 />
-<Button  colorScheme='yellow' borderLeftRadius="none" w={{base:"30%",lg:"10%"}} onClick={AddToCart}>Add to Cart</Button>
+<Button  colorScheme='yellow' borderLeftRadius="none" w={{base:"30%",lg:"10%"}} onClick={addToCart}>Add to Cart</Button>
 
          </Flex>
           

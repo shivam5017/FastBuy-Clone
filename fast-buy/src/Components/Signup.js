@@ -18,6 +18,7 @@ import {RiAccountCircleLine} from "react-icons/ri"
 import { useUserAuth } from "../Context/UserAuthContext"
 import { AlertDialog } from "@chakra-ui/react"
 import { useNavigate } from "react-router-dom"
+import { Spinner } from '@chakra-ui/react'
 const Signup = () => {
 
  const navigate=useNavigate()
@@ -26,22 +27,34 @@ const Signup = () => {
     const [name,setName]=useState("")
   const [error,setError]=useState("")
     const {signUp} = useUserAuth()
-
+    
      const Register=async()=>{
          setError("")
          try{
             await signUp(registerEmail,registerPassword,name)
-            console.log(signUp)
-            navigate("/")
+           
+            navigate("/login")
          }catch(err){
              setError(err.message)
          }
      }
+       
+const [loading,setLoading]=useState(false)
+
+useEffect(() => {
+  setLoading(true);
+  setTimeout(() => {
+    setLoading(false);
+  }, 1000);
+}, []);
+
 
 
 
   return (
     <div>
+       {
+            loading?(   <Spinner m="auto" justifyContent="center" mt="20%"/>):(
               <Box  display="flex">
               
               <Box  h="fit-content" w="50%" mt="100px" lineHeight={10}>
@@ -69,7 +82,7 @@ const Signup = () => {
                  <Text mt="-10px">Already have an account?</Text>
                  
                  </Box>
-                 <RouteLink to="/login" bg="none" color="rgb(0,70,190)" fontSize="20px" fontWeight="bold">Sign In</RouteLink> 
+                 <RouteLink to="/login"><Button w="30%" mt="20px" bg="rgb(0,70,190)" borderRadius="none" color="white">Sign In</Button></RouteLink> 
         
               </Box>
         
@@ -92,7 +105,7 @@ const Signup = () => {
          
             </Box>
         
-      
+            )}
     </div>
   )
 }

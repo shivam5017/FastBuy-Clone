@@ -34,7 +34,7 @@ const DealsContainer = () => {
 
 {
        data.map((e)=>(<>
-            <ProductDetails3 key={e.id} id={e.id} image={e.image} title={e.title} price={e.price} discount={e.discount} reviews={e.reviews}/>
+            <ProductDetails3 obj={e} key={e.id} id={e.id} image={e.image} title={e.title} price={e.price} discount={e.discount} reviews={e.reviews}/>
           
           </>
           ))

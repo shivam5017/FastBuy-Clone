@@ -4,12 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom"
-
+import {CartContextProvider} from "./Context/CartContext"
+import {NavbarContextProvider} from "./Context/NavbarContext"
 import { ChakraProvider } from '@chakra-ui/react';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <NavbarContextProvider> <CartContextProvider><BrowserRouter><ChakraProvider> <App /></ChakraProvider></BrowserRouter></CartContextProvider></NavbarContextProvider>
   
-  <BrowserRouter><ChakraProvider> <App /></ChakraProvider></BrowserRouter>
   
   );
 

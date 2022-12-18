@@ -6,7 +6,50 @@ import {BsBoxSeam,BsFacebook,BsInstagram,BsPinterest,BsTruck, BsTwitter, BsYoutu
 import {RiExchangeBoxLine} from 'react-icons/ri'
 import AccordianContent from "../Contents/AccordianContent"
 import FooterForm from '../Contents/FooterForm'
+import {Form} from "@chakra-ui/react"
+import {Link as RouteLink} from "react-router-dom"
+import {useState} from "react"
+import axios from "axios"
+import {useContext} from "react"
+import { useUserAuth } from '../Context/UserAuthContext'
+const names=JSON.parse(localStorage.getItem("buyername"))||[];
+
 const Footer = () => {
+    const {user,logout} =useUserAuth();
+    // const [feedBack,setFeedBack]=useState({
+    //     name:{names},
+    //     feedBack:"",
+    // })
+  let buyer;
+  if(user==null){
+    buyer=""
+  }else{
+    buyer=user.displayName;
+  }
+   
+//  let buyer=""||user.displayName;
+   
+     const [data,setData]=useState({
+        names:buyer,
+        feedback:""
+     })
+
+     const {name,feedBack}=data;
+
+     const onInputChange= e =>{
+       setData({...data,[e.target.name]:e.target.value})
+     }
+
+    const onSubmit=async e=>{
+     e.preventDefault();
+           await axios.post("http://localhost:4000/api/users",data);
+    }
+    
+
+
+     
+
+
   return (
     <>
     <Hide below="md">
@@ -88,12 +131,14 @@ const Footer = () => {
         </Box>
         </Flex>
         <Box bg="rgb(240,242,245)" h="550px" w="30%" p="20px"  >
-            <Text ><Link color="black">Sign in or Create Account</Link></Text>
+            <Text ><RouteLink color="black" to="./signup">Sign in or Create Account</RouteLink></Text>
             <Divider m="20px" />
-        <Heading fontSize="xl">Get the latest deals and more.</Heading>
+        <Heading fontSize="xl">FeedBacks</Heading>
         <Flex mt="20px">
-        <Input placeholder='Enter email address ' />
-        <Button colorScheme='black' color="black">Sign Up</Button>
+         <form onSubmit={e=>onSubmit(e)}>
+        <input placeholder='Give your Feedback' type="text" name="feedback"  onChange={e=>onInputChange(e)}/>
+        <button colorScheme='black' color="black" >Submit</button>
+        </form>
         </Flex>
         <Divider m="20px" />
         <Heading fontSize="2xl">Best Buy app</Heading>

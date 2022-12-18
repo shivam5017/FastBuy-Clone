@@ -16,8 +16,9 @@ import DealsContainer from '../Contents/DealsContainer';
 import BonusContainer from "../Contents/BonusContainer"
 import Footer from "../Components/Footer"
 import { Spinner } from '@chakra-ui/react'
+import { Skeleton, SkeletonCircle, SkeletonText,Stack } from '@chakra-ui/react'
 const DealsOfDay = () => {
-
+ 
  
   const [loading,setLoading]=useState(false)
 
@@ -32,14 +33,30 @@ const DealsOfDay = () => {
   return (
     
     <div>
-      {
-         loading ? (
-          <Spinner m="auto" justifyContent="center" mt="20%"/>
-        ):(
-          <>
         <Add1 />
         <Navbar />
       <Navbar2 />
+      
+      {
+         loading ? (
+          // <Spinner m="auto" justifyContent="center" mt="20%"/>
+       <>
+<Stack>
+  <Skeleton height='20px' />
+  <Skeleton height='20px' />
+  <Skeleton height='20px' />
+</Stack>
+<Skeleton>
+  <div>contents wrapped</div>
+  <div>won't be visible</div>
+</Skeleton><Skeleton>
+  <div>contents wrapped</div>
+  <div>won't be visible</div>
+</Skeleton>
+</>
+        ):(
+          <>
+      
       <Add2 />
      <TimerBox />
      <DealsContainer />

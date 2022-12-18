@@ -4,27 +4,31 @@ import {Text,Grid} from "@chakra-ui/react"
 import ProductDetails4 from "../ProductDetails/ProductDetails4"
 import React from 'react'
 import axios from "axios"
-import { useState,useEffect } from "react"
+import Navbar from "../Components/Navbar"
+import { useState,useEffect,useContext } from "react"
+import { NavbarContext } from "../Context/NavbarContext"
 const getItems=()=>{
 
-    return axios.get(`http://localhost:4000/api/products/?_limit=16`)
+    return axios.get(`http://localhost:4000/api/products`)
     
     }
 
 const BonusContainer = () => {
+  
+  const {search}=useContext(NavbarContext)
+  
+  //  console.log(search)
 
-
-    const [data,setData]=useState([])
-
+    const [datas,setDatas]=useState([])
+   
     useEffect(()=>{
       getItems()
       .then((res)=>  
-      setData(res.data))
+      setDatas(res.data))
       .catch((err)=>console.log(err))
   
     },[])
   
-
 
   return (
    <>
@@ -33,10 +37,16 @@ const BonusContainer = () => {
               <Grid w="full" h="fit-content" gridGap={4} gridTemplateColumns={{base:"1fr 1fr",lg:"1fr 1fr 1fr 1fr"}} mt={{base:"20px",lg:"20px"}}>
       
       {
-     data.map((e)=>(<>
-           <ProductDetails4 key={e.id} id={e.id} image={e.image} title={e.title} price={e.price} discount={e.discount} reviews={e.reviews}/>
+     datas.filter((e)=>{
+       if(search==""){
+        return e
+       }else if(e.title.toLowerCase().includes(search.toLowerCase())){
+        return e
+       }
+     }).map((e)=>(
+           <ProductDetails4 key={e.id} obj={e} id={e.id} image={e.image} title={e.title} price={e.price} discount={e.discount} reviews={e.reviews}/>
         
-        </>
+        
         ))
       }    
 
