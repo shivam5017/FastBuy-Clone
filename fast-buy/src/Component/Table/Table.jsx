@@ -22,8 +22,8 @@ const TablePage = () => {
   console.log(data)
 
 
-//   const {arr} = useContext(CartContext);
-//  console.log(arr)
+  const {arr} = useContext(CartContext);
+ console.log(arr)
   
 
 

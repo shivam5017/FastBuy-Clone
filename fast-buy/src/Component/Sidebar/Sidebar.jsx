@@ -10,7 +10,7 @@ import { Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import {UilPackage} from "@iconscout/react-unicons";
 import MainDash from "../MainDash/MainDash";
-
+import {Link as RouteLink} from "react-router-dom"
 
 
 const Sidebar = () => {
@@ -28,9 +28,7 @@ const Sidebar = () => {
       left : '-60%'
     }
   }
-  const handleProducts=()=>{
-     
-  }
+ 
   
 
   const handleLogout=async()=>{
@@ -70,13 +68,13 @@ const Sidebar = () => {
               onClick={() => setSelected(index)}
             >
               <item.icon />
-              <span onClick={handleProducts}>{item.heading}</span>
+              <span >{item.heading}</span>
             </div>
           );
         })}
             <div  className="menuItem">
               <UilPackage />
-              <span onClick={handleProducts} >Products</span>
+            <RouteLink to="/Productedit"><span  >Products</span></RouteLink>  
             </div>
 
         {/* signoutIcon */}

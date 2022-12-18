@@ -182,7 +182,7 @@ useEffect(() => {
                             calculate(
                               e.target.value,
                               item.discount,
-                              item.price,
+                              +item.price,
                           
                             )
                           }

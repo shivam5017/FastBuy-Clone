@@ -17,7 +17,7 @@ const BonusContainer = () => {
   
   const {search}=useContext(NavbarContext)
   
-   console.log(search)
+  //  console.log(search)
 
     const [datas,setDatas]=useState([])
    
