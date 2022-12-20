@@ -42,3 +42,35 @@ Landing Page :-
 
 ![Screenshot (20)](https://user-images.githubusercontent.com/110033165/208610471-ee2b5d62-b5e1-454a-aabd-cd3320ab40a3.png)
 
+Deals of Day Page
+![deals](https://user-images.githubusercontent.com/110033165/208610629-dcae6fe4-0248-4e1f-8c41-007e4a92a829.png)
+
+
+Cart Page when its empty
+![cart](https://user-images.githubusercontent.com/110033165/208610685-3b7dd1d9-cea3-43ad-aa5c-b8dfcce3d751.png)
+
+
+Cart with Data
+![cart with data](https://user-images.githubusercontent.com/110033165/208611047-7acac637-a537-43f7-b893-22a280e1ae26.png)
+
+
+Login & Signup 
+![login](https://user-images.githubusercontent.com/110033165/208611391-0e3c81f2-fde4-4e44-b2c8-6b18924625c6.png)
+
+![singup](https://user-images.githubusercontent.com/110033165/208611552-6da17892-fa92-423b-a1c7-82f56a4b2346.png)
+
+
+Admin Side:-
+
+DashBoard
+
+![admin](https://user-images.githubusercontent.com/110033165/208611621-2182dce1-e3f1-4961-b485-9b0b4ab4fdd0.png)
+
+Add Products
+
+![add](https://user-images.githubusercontent.com/110033165/208611707-92403a15-7faa-42cc-abd3-842ac301ed5d.png)
+
+
+
+
+
