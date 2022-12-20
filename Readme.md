@@ -12,10 +12,10 @@ An American Company from where you can Buy different sort of electronics product
  
  Tech Stack:-
  
- React Js
- Chakra UI
- Material UI
- Javascript
+ * React Js
+ * Chakra UI
+ * Material UI
+ * Javascript
  
  
 The features of this projects are:-
