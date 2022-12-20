@@ -34,3 +34,11 @@ Admin Side:-
 
 Link:- https://fast-buy.netlify.app/
 
+
+
+User Side:- 
+
+Landing Page :- 
+
+![Screenshot (20)](https://user-images.githubusercontent.com/110033165/208610471-ee2b5d62-b5e1-454a-aabd-cd3320ab40a3.png)
+
