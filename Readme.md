@@ -10,6 +10,12 @@ An American Company from where you can Buy different sort of electronics product
  Javascript,React Js,Chakra UI,Material UI etc. Basically the Javascript and React JS is used to showCase the functionality part. The Login and Signup Page is
  done with the Firebase website or database.
  
+ Tech Stack:-
+ 
+ React Js
+ Chakra UI
+ Material UI
+ Javascript
  
  
 The features of this projects are:-
